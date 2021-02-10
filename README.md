@@ -1,6 +1,15 @@
-
 #machine_learning
 
-After lots and lots of fine tuning and failure, the models that stuck out as the best ended up being the neural model (model4) and the k-nearest-neighbor model (model6). While playing with all the x variables using decision tress and random forests, it became clear that the difference between including all possible variables and a select few provided negligable difference, or even worse results as variables were further limited, leading me to include all variables for other models. The K nearest neighbor model had the best spot at k = 17, which is roughly what I would have expected based on the random forest analysis.
+This project utilizes data from NASAs Kepler Objects of Interest table identifying potential exoplanets. The dataset is made up of potential exoplanets divided into 
+'Confirmed', 'False Positive', and 'Candidate' classifications along with 40 columns of readings taken by the NASA Exoplanet Science Institute. The goal of this project was to 
+train a machine learning model that can predict if an exoplanet observation will turn out to be confirmed or a false positive. The first step of this was to drop all the 
+'Candidates' from the dataset in order to have a good training and testing sample.
 
-The neural model is almost certainly the best as it was able to bring in all the variables and self tune the accuracy and weighting of each variable over many itterations to achieve a very high accuracy score with very little loss.
+After dropping the candidates the next step was to do some feature analysis with a decision tree and random forest model. Looking at the different features in order of
+importance it was clear that no individual variable was all the important and many of the variables had less than 1% of the feature importance in the random forest iteration.
+Despite many of these features ranking very low in importance to the model, dropping all the features below that 1% threshold yielded virtually identical results to all
+features, and further narrowing of the features only made preformance worse and worse. Because of this, I decided to include all the features in the dataset for future models.
+
+ After the random forest analysis I experimented with various types of models such as Logistic regression, K-nearest neighbors, svc, but the most effective model was a neural
+ network model that was able to predict whether an observation turned out to be confirmed or a false positive with a high degree of accuracy and very little loss.
+
